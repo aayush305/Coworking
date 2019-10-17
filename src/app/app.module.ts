@@ -17,7 +17,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material";
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { ReactiveFormsModule , FormsModule } from "@angular/forms";
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
     SignupComponent,
     TeamComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,6 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent, SignupComponent]
+  entryComponents: [LoginComponent]
 })
 export class AppModule {}

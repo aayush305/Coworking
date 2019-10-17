@@ -1,5 +1,4 @@
-@import "../../../node_modules//ngx-toastr/toastr.css";
-body,
+ body,
 html {
   font-family: "Raleway", sans-serif;
   text-rendering: optimizeLegibility !important;
@@ -705,6 +704,7 @@ label {
   font-size: 16px;
   padding: 16px 32px;
 }
+
 .custom-dialog-container .mat-dialog-container {
   display: block;
   padding: 24px;

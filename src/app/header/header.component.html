@@ -28,7 +28,8 @@
         <li><a href="#call-reservation" class="page-scroll">Contact</a></li>
         <li></li>
         <li>
-          <a class="page-scroll" (click)="onCreate()">Login</a>
+          <a id="logId"  *ngIf="!islogged" class="page-scroll" (click)="onCreate()">Login</a>
+          <a id="logId1"  *ngIf="islogged" class="page-scroll" (click)="onLogout()">Logout</a>
         </li>
         <li><a class="page-scroll" (click)="onCreateSign()">Sign Up</a></li>
       </ul>

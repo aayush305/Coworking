@@ -225,7 +225,9 @@ h1 {
   position: relative;
 }
 #content #form input[type="text"],
-#content #form input[type="password"] {
+#content #form input[type="password"],
+#content #form input[type="email"]
+ {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -267,7 +269,8 @@ h1 {
 #password {
   background-position: 10px -53px !important;
 }
-#content #form input[type="button"] {
+#content #form input[type="button"],
+#content #form button[type="submit"] {
   background: rgb(254, 231, 154);
   background: -moz-linear-gradient(
     top,
@@ -316,7 +319,8 @@ h1 {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   width: 120px;
 }
-#content #form input[type="button"]:hover {
+#content #form input[type="button"]:hover,
+#content #form button[type="submit"]:hover {
   background: rgb(254, 193, 81);
   background: -moz-linear-gradient(
     top,

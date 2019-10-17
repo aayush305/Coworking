@@ -1,43 +1,53 @@
 <div id="body">
   <!-- <div id="unblurred"> -->
-  <div class="container">
-    <section id="content">
-      <div id="form">
-        <h1>Login Form</h1>
-        <div>
-          <input type="text" placeholder="Username" required="" id="username" />
+  <form (submit)="loginevent($event)">
+    <div class="container">
+      <section id="content">
+        <div id="form">
+          <h1>Login Form</h1>
+          <div>
+            <input
+              type="email"
+              placeholder="Email"
+              required=""
+              id="email"
+              name="email"
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              required=""
+              id="password"
+              name="password"
+            />
+          </div>
+          <div>
+            <!-- <input style="margin-left: 40px;" type="button" value="Log in" (click)="loginevent($event)"/> -->
+            <button type="submit" style="margin-left: 40px;">Log in</button>
+            <input
+              style="margin-left: 45px;"
+              type="button"
+              value="Cancel"
+              (click)="onClose()"
+            />
+            <a style="margin-bottom: 30px; font-size: 14px;" href="#"
+              >Forgot your password?</a
+            >
+            <a
+              style="margin-bottom: 30px; font-size: 14px;"
+              (click)="onCreateSign()"
+              >New to Touché?</a
+            >
+          </div>
         </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            required=""
-            id="password"
-          />
-        </div>
-        <div>
-          <input style="margin-left: 40px;" type="button" value="Log in" />
-          <input
-            style="margin-left: 45px;"
-            type="button"
-            value="Cancel"
-            (click)="onClose()"
-          />
-          <a style="margin-bottom: 30px; font-size: 14px;" href="#"
-            >Forgot your password?</a
-          >
-          <a
-            style="margin-bottom: 30px; font-size: 14px;"
-            (click)="onCreateSign()"
-            >New to Touché?</a
-          >
-        </div>
-      </div>
-      <!-- </form> -->
-      <!-- form -->
-    </section>
-    <!-- content -->
-  </div>
-  <!-- container -->
-  <!-- </div> -->
+        <!-- </form> -->
+        <!-- form -->
+      </section>
+      <!-- content -->
+    </div>
+    <!-- container -->
+    <!-- </div> -->
+  </form>
 </div>
