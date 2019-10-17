@@ -17,8 +17,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material";
-import { ReactiveFormsModule , FormsModule } from "@angular/forms";
-import { LogoutComponent } from './logout/logout.component';
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { LogoutComponent } from "./logout/logout.component";
 
 @NgModule({
   declarations: [
@@ -50,6 +50,6 @@ import { LogoutComponent } from './logout/logout.component';
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent]
+  entryComponents: [LoginComponent, SignupComponent]
 })
 export class AppModule {}
