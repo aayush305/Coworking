@@ -1,1 +1,51 @@
-<p>signup works!</p>
+<div id="body">
+  <!-- <div id="unblurred"> -->
+  <div class="container">
+    <section id="content">
+      <form (submit)="signUpDataEntry($event)">
+        <h1>Sign Up</h1>
+        <div>
+          <input type="text" placeholder="Username" required="" id="username" />
+        </div>
+        <div>
+          <input type="email" placeholder="Email Id" required="" id="mail" />
+        </div>
+        <div>
+          <input
+            type="tel"
+            placeholder="Contact Number"
+            required=""
+            id="cont"
+          />
+        </div>
+        <div>
+          <input type="password" placeholder="Password" required="" id="pass" />
+        </div>
+        <div>
+          <input
+            type="password"
+            placeholder="Confirm-Password"
+            required=""
+            id="copass"
+          />
+        </div>
+        <div>
+          <button style="margin-left: 40px;" type="submit">Submit</button>
+          <input
+            style="margin-left: 45px;"
+            type="button"
+            value="Cancel"
+            (click)="onCloseSign()"
+          />
+          <a style="margin-bottom: 30px; font-size: 14px;" (click)="onCreate()"
+            >Already Have an account?</a
+          >
+        </div>
+      </form>
+      <!-- form -->
+    </section>
+    <!-- content -->
+  </div>
+  <!-- container -->
+  <!-- </div> -->
+</div>
