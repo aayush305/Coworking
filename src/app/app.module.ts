@@ -12,6 +12,9 @@ import { SignupComponent } from "./signup/signup.component";
 import { TeamComponent } from "./team/team.component";
 import { FooterComponent } from "./footer/footer.component";
 import { HomeComponent } from "./home/home.component";
+import { AuthService } from "./auth.service";
+import { HttpClientModule } from "@angular/common/http";
+import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -34,9 +37,15 @@ import { ReactiveFormsModule } from "@angular/forms";
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: "toast-top-right",
+      preventDuplicates: false
+    })
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent]
 })

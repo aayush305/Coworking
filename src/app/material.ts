@@ -13,7 +13,6 @@ const modules = [
   MatButtonModule,
   MatDialogModule
 ];
-
 @NgModule({
   imports: modules,
   exports: modules
