@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { LoginComponent } from "../login/login.component";
+import { LoginComponent, isLogOpen } from "../login/login.component";
 
 @Component({
   selector: "app-header",
@@ -13,10 +13,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {}
 
   onCreate() {
-    const matConfig = new MatDialogConfig();
-    matConfig.disableClose = true;
-    matConfig.autoFocus = true;
-    matConfig.panelClass = "custom-dialog-container";
-    this.login.open(LoginComponent, matConfig);
+    if (!isLogOpen) {
+      const matConfig = new MatDialogConfig();
+      matConfig.disableClose = true;
+      matConfig.autoFocus = true;
+      matConfig.panelClass = "custom-dialog-container";
+      this.login.open(LoginComponent, matConfig);
+    }
   }
 }

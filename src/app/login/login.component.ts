@@ -1,26 +1,21 @@
 import { Input, Component, Output, EventEmitter, OnInit } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
+export var isLogOpen: boolean;
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-  form: FormGroup = new FormGroup({
-    username: new FormControl(""),
-    password: new FormControl("")
-  });
-
-  submit() {
-    if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
-    }
+  constructor(private login: MatDialog) {
+    isLogOpen = true;
   }
-  @Input() error: string | null;
+  ngOnInit() {}
 
-  @Output() submitEM = new EventEmitter();
+  onClose() {
+    isLogOpen = false;
+    this.login.closeAll();
+  }
 }
