@@ -8,81 +8,115 @@
             <!--<a href="#about" class="btn btn-custom btn-lg page-scroll"></a>-->
             <p id="request"></p>
           </div>
-          <form (submit)="requestvisitevent($event)">
-            <table cellspacing="10">
-              <tr>
-                <th>
-                  <div
-                    style="margin-left:40px;padding-left:70px"
-                    class="form-group"
-                  >
-                    <input
-                      type="text"
-                      style="width:150%"
-                      id="name"
-                      name="name"
-                      class="form-control"
-                      placeholder="Name"
-                      required="required"
-                    />
-                    <p class="help-block text-danger"></p>
-                  </div>
-                </th>
-                <th>
-                  <div
-                    style="margin-left:40px;padding-left:70px"
-                    class="form-group"
-                  >
-                    <input
-                      type="email"
-                      style="width:150%"
-                      id="email"
-                      name="email"
-                      class="form-control"
-                      placeholder="Email"
-                      required="required"
-                    />
-                    <p class="help-block text-danger"></p>
-                  </div>
-                </th>
-                <th>
-                  <div
-                    style="margin-left:40px;padding-left:70px"
-                    class="form-group"
-                  >
-                    <input
-                      type="tel"
-                      style="width:150%"
-                      id="mn"
-                      name="mn"
-                      class="form-control"
-                      placeholder="Mobile"
-                      required="required"
-                    />
-                    <p class="help-block text-danger"></p>
-                  </div>
-                </th>
-                <th>
-                  <div
-                    style="margin-left:40px;padding-left:70px"
-                    class="form-group"
-                  >
-                    <div style="padding-top:0px;">
-                      <button
-                        type="submit"
-                        value="submit"
-                        class="mdc-button mdc-snackbar__action btn-visit"
-                      >
-                        Book Visit
-                      </button>
+      <form #f="ngForm" novalidate (submit)="requestvisitevent($event)">
+     
+          <table cellspacing="10">
+            <tr>
+              <th>
+                <div
+                  style="margin-left:40px;padding-left:70px"
+                  class="form-group"
+                >
+                  <input
+                    type="text"
+                    style="width:150%"
+                    id="name"
+                    
+                    name="name" 
+                    ngModel
+                    #namevalid="ngModel"
+                    pattern="[a-zA-z][a-zA-Z ]+"  
+                    class="form-control"
+                    placeholder="Name"
+                    required="required"
+                  />
+                  <div *ngIf="!namevalid.valid && namevalid.touched " class="alert alert-danger">
+                    <div *ngIf="namevalid.errors?.required">
+                        Name is required!
                     </div>
-
-                    <p class="help-block text-danger"></p>
+                    <div *ngIf="namevalid.errors?.pattern">
+                        Invalid Name!
+                    </div>
                   </div>
-                </th>
-              </tr>
-            </table>
-          </form>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </th>
+              <th>
+                <div
+                  style="margin-left:40px;padding-left:70px"
+                  class="form-group"
+                >
+                  <input
+                    type="email"
+                    style="width:150%"
+                    id="email"
+                    name="email"
+                    ngModel
+                    #mailvalid="ngModel"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                    class="form-control"
+                    placeholder="Email"
+                    required="required"
+                  />
+                  <div *ngIf="!mailvalid.valid && mailvalid.touched" class="alert alert-danger">
+                      <div *ngIf="mailvalid.errors?.required">
+                          Email is required!
+                      </div>
+                      <div *ngIf="mailvalid.errors?.pattern">
+                          Invalid Email!
+                      </div>
+                    </div>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </th>
+              <th>
+                <div
+                  style="margin-left:40px;padding-left:70px"
+                  class="form-group"
+                >
+                  <input
+                    type="tel"
+                    style="width:150%"
+                    id="mn"
+                    name="mn"
+                    ngModel
+                    #mnvalid="ngModel"
+                    pattern="[0-9]*"
+                    class="form-control"
+                    placeholder="Mobile"
+                    maxlength="11"
+                    minlength="10"
+                    required="required"
+                  />
+                  <div *ngIf="!mnvalid.valid && mnvalid.touched" class="alert alert-danger">
+                      <div *ngIf="mnvalid.errors?.required">
+                          ContactNumber is required!
+                      </div>
+                      <div *ngIf="mnvalid.errors?.pattern || mnvalid.errors?.minlength">
+                          Invalid Contact!
+                      </div>
+                      </div>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </th>
+              <th>
+                <div
+                  style="margin-left:40px;padding-left:70px"
+                  class="form-group"
+                >
+                  <div style="padding-top:0px;">
+                    <button type="submit" value="submit"  class="mdc-button mdc-snackbar__action btn-visit" [disabled]="f.invalid"
+                  >Book Visit</button>
+                    
+                  </div>
+               
+                  <p class="help-block text-danger"></p>
+                </div>
+              </th>
+            </tr>
+          </table>
+        </form>
+       
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ["./reqvisit.component.css"]
 })
 export class ReqvisitComponent implements OnInit {
+  model : any={};
   constructor(private Auth: AuthService) {}
 
   ngOnInit() {}

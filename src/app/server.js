@@ -22,13 +22,7 @@ var reqvisit = mongoose.model("reqvisit", reqvisitschema);
 //var user=require('./schemas/users')
 
 
-var signupschema = new mongoose.Schema({
-    name: String,
-    email: String,
-    mn: Number,
-    password: String
-  }); // {collection : 'user'});
-  var signup = mongoose.model("signup", signupschema);
+
   
 
 app.post('/requestvisit',async (req,res)=>{
@@ -58,7 +52,7 @@ app.post('/requestvisit',async (req,res)=>{
             }
             else{
                 console.log(data)
-                console.log("love you baby")
+                console.log("data inserted")
                 res.status(200).json({
                 isSucceed: true
                 });
@@ -68,15 +62,23 @@ app.post('/requestvisit',async (req,res)=>{
     }
     
 })
-
+var signupschema = new mongoose.Schema({
+  name: String,
+  email: String,
+  mn: Number,
+  password: String
+}); // {collection : 'user'});
+var signup = mongoose.model("signup", signupschema);
 
 app.post('/login',async (req,res)=>{
+ // console.log("email from node"+req.body.email)
+
+   // console.log("in sign ins")
     console.log(req.body)
     const {email,password}=req.body
-    const resp=await signup.find({email,password})
+    const resp=await signup.findOne({email,password})
     console.log("email and pass by user:"+email+" "+password)
     console.log("response"+resp)
-   
 
             if(!resp)
             {

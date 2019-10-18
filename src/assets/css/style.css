@@ -189,6 +189,7 @@ a:focus,
   line-height: 1.42857143;
   color: #fff;
   background-color: #72a411;
+  margin-bottom: 60px;
 }
 .btn-custom:hover,
 .btn-custom:focus,
@@ -579,6 +580,7 @@ label {
   -webkit-transition: none;
   -o-transition: none;
   transition: none;
+  margin-bottom: 60px;
 }
 #contact .form-control:focus {
   border-color: #999;
@@ -699,8 +701,8 @@ label {
 }
 
 .text22 {
-  background-color: #4caf50;
-  color: white;
+  
+  color:black;
   font-size: 16px;
   padding: 16px 32px;
 }
@@ -721,4 +723,46 @@ label {
   -webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
+}
+
+
+
+.bookcontainer {
+  position: relative;
+  width: 50%;
+}
+
+.bookimage {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.bookmiddle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.bookcontainer:hover .image {
+  opacity: 0.3;
+}
+
+.bookcontainer:hover .middle {
+  opacity: 1;
+}
+
+.booktext {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
 }

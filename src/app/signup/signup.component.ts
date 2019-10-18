@@ -12,6 +12,7 @@ var temp;
   styleUrls: ["./signup.component.css"]
 })
 export class SignupComponent implements OnInit {
+  model : any={};
   constructor(
     private login: MatDialog,
     private Auth: AuthService,
@@ -40,6 +41,7 @@ export class SignupComponent implements OnInit {
 
     if (pass === cpass) {
       if (errorList.length === 0) this.Auth.signUpData(name, email, mn, pass);
+      this.onCloseSign();
     } else {
       this.Toastr.error("Password and Confirm Password Must match", "Error", {
         progressBar: true

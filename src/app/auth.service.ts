@@ -60,6 +60,7 @@ export class AuthService {
 
 loginuser(email,password){ 
   console.log("b click");
+
   this.http.post("http://localhost:8000/login",{email,password}).subscribe((res: any)=>{
   //  console.log("my response"+res)
     //console.log("my response"+res.isLogin)
