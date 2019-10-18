@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { LogoutComponent } from "./logout/logout.component";
+import { DetailArea1Component } from './detail-area1/detail-area1.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LogoutComponent } from "./logout/logout.component";
     TeamComponent,
     FooterComponent,
     HomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    DetailArea1Component
   ],
   imports: [
     BrowserModule,

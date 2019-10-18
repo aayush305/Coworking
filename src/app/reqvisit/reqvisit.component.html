@@ -8,78 +8,81 @@
             <!--<a href="#about" class="btn btn-custom btn-lg page-scroll"></a>-->
             <p id="request"></p>
           </div>
-      <form (submit)="requestvisitevent($event)">
-     
-          <table cellspacing="10">
-            <tr>
-              <th>
-                <div
-                  style="margin-left:40px;padding-left:70px"
-                  class="form-group"
-                >
-                  <input
-                    type="text"
-                    style="width:150%"
-                    id="name"
-                    name="name"
-                    class="form-control"
-                    placeholder="Name"
-                    required="required"
-                  />
-                  <p class="help-block text-danger"></p>
-                </div>
-              </th>
-              <th>
-                <div
-                  style="margin-left:40px;padding-left:70px"
-                  class="form-group"
-                >
-                  <input
-                    type="email"
-                    style="width:150%"
-                    id="email"
-                    name="email"
-                    class="form-control"
-                    placeholder="Email"
-                    required="required"
-                  />
-                  <p class="help-block text-danger"></p>
-                </div>
-              </th>
-              <th>
-                <div
-                  style="margin-left:40px;padding-left:70px"
-                  class="form-group"
-                >
-                  <input
-                    type="tel"
-                    style="width:150%"
-                    id="mn"
-                    name="mn"
-                    class="form-control"
-                    placeholder="Mobile"
-                    required="required"
-                  />
-                  <p class="help-block text-danger"></p>
-                </div>
-              </th>
-              <th>
-                <div
-                  style="margin-left:40px;padding-left:70px"
-                  class="form-group"
-                >
-                  <div style="padding-top:0px;">
-                    <button type="submit" value="submit"  class="mdc-button mdc-snackbar__action btn-visit"
-                  >Book Visit</button>
-                    
+          <form (submit)="requestvisitevent($event)">
+            <table cellspacing="10">
+              <tr>
+                <th>
+                  <div
+                    style="margin-left:40px;padding-left:70px"
+                    class="form-group"
+                  >
+                    <input
+                      type="text"
+                      style="width:150%"
+                      id="name"
+                      name="name"
+                      class="form-control"
+                      placeholder="Name"
+                      required="required"
+                    />
+                    <p class="help-block text-danger"></p>
                   </div>
-               
-                  <p class="help-block text-danger"></p>
-                </div>
-              </th>
-            </tr>
-          </table>
-        </form>
+                </th>
+                <th>
+                  <div
+                    style="margin-left:40px;padding-left:70px"
+                    class="form-group"
+                  >
+                    <input
+                      type="email"
+                      style="width:150%"
+                      id="email"
+                      name="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required="required"
+                    />
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </th>
+                <th>
+                  <div
+                    style="margin-left:40px;padding-left:70px"
+                    class="form-group"
+                  >
+                    <input
+                      type="tel"
+                      style="width:150%"
+                      id="mn"
+                      name="mn"
+                      class="form-control"
+                      placeholder="Mobile"
+                      required="required"
+                    />
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </th>
+                <th>
+                  <div
+                    style="margin-left:40px;padding-left:70px"
+                    class="form-group"
+                  >
+                    <div style="padding-top:0px;">
+                      <button
+                        type="submit"
+                        value="submit"
+                        class="mdc-button mdc-snackbar__action btn-visit"
+                      >
+                        Book Visit
+                      </button>
+                    </div>
+
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </th>
+              </tr>
+            </table>
+          </form>
         </div>
       </div>
     </div>

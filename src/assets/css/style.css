@@ -718,4 +718,7 @@ label {
   max-height: inherit;
   background-color: transparent;
   color: #fff;
+  -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
 }
