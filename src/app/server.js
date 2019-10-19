@@ -1,6 +1,9 @@
 var express = require("express");
 var bodyparser = require("body-parser");
 var app = express();
+var rn = require("random-number");
+const nodemailer = require("nodemailer");
+
 app.use(bodyparser.json());
 
 app.use((req, res, next) => {
@@ -88,6 +91,7 @@ app.post("/bookarea", async (req, res) => {
   });
   return { update: resChange, insert: resArea };
 });
+
 app.post("/requestvisit", async (req, res) => {
   const email = req.body.email;
   const resp = await reqvisit.findOne({ email });
@@ -186,35 +190,99 @@ app.post("/login", async (req, res) => {
 
 app.post("/signupdata", async (req, res) => {
   const email = req.body.email;
+  console.log(email);
   const resp = await signup.findOne({ email });
   var emailregister = false;
-  console.log("In server");
+  //console.log("In server");
   if (resp) {
     console.log("oh no");
     res.status(200).json({
       emailregister: true
     });
   } else {
-    new signup({
-      name: req.body.name,
-      password: req.body.pass,
-      email: req.body.email,
-      mn: req.body.mn
-    }).save(function(err, data) {
-      if (err) {
-        console.log("Sign up error" + err);
-        res.status(500).json({
+    /* new signup({
+                    name: req.body.name,
+                    password: req.body.pass,
+                    email: req.body.email,
+                    mn: req.body.mn
+                  }).save(function(err, data) {
+                    if (err) {
+                      console.log("Sign up error" + err);
+                      res.status(500).json({
+                        isSucceed: false
+                      });
+                    } else {
+                      console.log(data);
+                      console.log("Sign up data successfully");
+                      res.status(200).json({
+                        isSucceed: true
+                      });
+                    }
+                  });
+                }*/
+
+    var options = {
+      min: 1000,
+      max: 9999,
+      integer: true
+    };
+    var num = rn(options);
+
+    console.log(num);
+
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      //secure: false, // true for 465, false for other ports
+      auth: {
+        user: "danineel2352@gmail.com", // generated ethereal user
+        pass: "google22042000npd" // generated ethereal password
+      }
+    });
+
+    let info = {
+      from: "danineel2352@gmail.com",
+      to: email,
+      subject: "otp verification",
+      text: "Your Otp is:" + num
+    };
+    transporter.sendMail(info, function(error, data) {
+      if (error) {
+        console.log("Mail failed");
+        res.status(200).json({
           isSucceed: false
         });
       } else {
-        console.log(data);
-        console.log("Sign up data successfully");
+        console.log("mail success.");
         res.status(200).json({
-          isSucceed: true
+          isSucceed: true,
+          emailregister: false,
+          otp: num
         });
       }
     });
   }
+});
+
+app.post("/registerdata", async (req, res) => {
+  new signup({
+    name: req.body.name,
+    password: req.body.pass,
+    email: req.body.email,
+    mn: req.body.mn
+  }).save(function(err, data) {
+    if (err) {
+      console.log("Sign up error" + err);
+      res.status(500).json({
+        isSucceed: false
+      });
+    } else {
+      console.log(data);
+      console.log("Sign up data successfully");
+      res.status(200).json({
+        isSucceed: true
+      });
+    }
+  });
 });
 
 app.listen(8000, () => console.log("server is listening at 8000"));

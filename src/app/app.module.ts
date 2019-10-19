@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { LogoutComponent } from "./logout/logout.component";
+import { OtpComponent } from './otp/otp.component';
 import { DetailArea1Component } from './detail-area1/detail-area1.component';
 import { BookSinAreaComponent } from './book-sin-area/book-sin-area.component';
 
@@ -36,6 +37,7 @@ import { BookSinAreaComponent } from './book-sin-area/book-sin-area.component';
     FooterComponent,
     HomeComponent,
     LogoutComponent,
+    OtpComponent,
     DetailArea1Component,
     BookSinAreaComponent
   ],
@@ -55,6 +57,6 @@ import { BookSinAreaComponent } from './book-sin-area/book-sin-area.component';
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent, SignupComponent]
+  entryComponents: [LoginComponent, SignupComponent,OtpComponent]
 })
 export class AppModule {}

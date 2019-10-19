@@ -43,7 +43,14 @@
             >Logout</a
           >
         </li>
-        <li><a class="page-scroll" (click)="onCreateSign()">Sign Up</a></li>
+        <li>
+          <a *ngIf="!islogged" class="page-scroll" (click)="onCreateSign()"
+            >Sign Up</a
+          >
+          <a *ngIf="islogged" class="page-scroll" (click)="onCreateSign()"
+            >View Profile</a
+          >
+        </li>
       </ul>
     </div>
   </div>

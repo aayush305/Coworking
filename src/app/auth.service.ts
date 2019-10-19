@@ -5,7 +5,6 @@ import { ToastrService } from "ngx-toastr";
 import { MatDialog } from "@angular/material/dialog";
 import { HeaderComponent } from "./header/header.component";
 import { Subject } from "rxjs";
-import { isNull } from "@angular/compiler/src/output/output_ast";
 
 export interface userdata {
   email: string;
@@ -98,11 +97,6 @@ export class AuthService {
           }
           sessionStorage.setItem("fetchData", JSON.stringify(res.fatchData));
 
-          // this.isLogged.next(true)
-          // this.Toastr.success("Logging You In", "Correct");
-          // this.login.closeAll();
-          // var refresh : HeaderComponent = new HeaderComponent(null,this);
-          // refresh.ngOnInit();
         }
         if (!res.isFetch) {
           this.Toastr.error("Sorry Something Went wrong!", "Error");
@@ -129,6 +123,8 @@ export class AuthService {
           this.login.closeAll();
           // var refresh : HeaderComponent = new HeaderComponent(null,this);
           // refresh.ngOnInit();
+
+          this.router.navigate(["/head"]);
         }
         if (!res.isLogin) {
           this.Toastr.error("Invalid login credentials", "Error");
@@ -136,24 +132,65 @@ export class AuthService {
         }
       });
   }
-
+  public ootp;
+  public check;
   signUpData(name, email, mn, pass) {
     console.log("Inside signUpData Auth service");
+    console.log(email);
     this.http
       .post("http://localhost:8000/signupdata", { name, email, mn, pass })
+      .subscribe(
+        (res: any) => {
+          console.log("inside signup auth" + res.emailregister);
+          if (res.emailregister) {
+            sessionStorage.setItem("emailregister", res.emailregister);
+            this.Toastr.error("Email id already exist", "Error", {
+              progressBar: true
+            });
+          } else {
+            this.ootp = res.otp;
+            console.log("OTP by service" + this.ootp);
+            sessionStorage.setItem("otp", res.otp);
+            if (res.isSucceed) {
+              this.check = true;
+              sessionStorage.setItem("check", this.check);
+              sessionStorage.setItem("emailregister", res.emailregister);
+              this.Toastr.success("mail is send succesfully", "Success", {
+                progressBar: true
+              });
+            }
+          }
+        },
+        (error: any) => {
+          if (error.isSucceed === "false") {
+            this.Toastr.error("Something went wrong", "Error");
+
+            console.log("Error-->");
+          }
+        }
+      );
+  }
+
+  otpenterdata(name, email, mn, pass) {
+    console.log("Inside signUpData Auth service");
+
+    this.http
+      .post("http://localhost:8000/registerdata", { name, email, mn, pass })
       .subscribe(
         (response: any) => {
           if (response.emailregister) {
             this.Toastr.error("Email id already exist", "Error", {
               progressBar: true
             });
-          }
-          if (response.isSucceed) {
-            this.Toastr.success("Signed Up! Ready for Login", "Success", {
-              progressBar: true
-            });
+          } else {
+            if (response.isSucceed) {
+              this.Toastr.success("Signed Up! Ready for Login", "Success", {
+                progressBar: true
+              });
+              sessionStorage.clear();
 
-            //this.router.navigate(['/login']);
+              //this.router.navigate(['/login']);
+            }
           }
         },
         (error: any) => {

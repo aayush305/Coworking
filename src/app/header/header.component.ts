@@ -17,9 +17,9 @@ export class HeaderComponent implements OnInit {
   public islogged = false;
   constructor(private login: MatDialog, private Auth: AuthService) {
     this.authSub = this.Auth.getAuthListner().subscribe(data => {
-      this.islogged = data;
-    });
-  }
+    this.islogged = data;
+  });
+}
   // status=this.Auth.islogged()
   ngOnInit() {
     this.islogged = this.Auth.getAuthStatus();

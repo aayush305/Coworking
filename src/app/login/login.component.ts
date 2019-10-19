@@ -36,12 +36,11 @@ export class LoginComponent implements OnInit {
   onClose() {
     isLogOpen = false;
     if (isSignOpen) {
-      var sign: SignupComponent = new SignupComponent(null, null, null);
-      sign.onCloseSign();
-    } else {
-      this.login.closeAll();
-      return;
+      var sign: SignupComponent = new SignupComponent(this.login, null, null);
+      sign.revIsSignOpen();
     }
+    this.login.closeAll();
+    return;
   }
 
   revIsLogOpen() {

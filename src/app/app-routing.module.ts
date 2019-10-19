@@ -1,7 +1,10 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { DetailArea1Component } from "./detail-area1/detail-area1.component";
+import { ReqvisitComponent } from "./reqvisit/reqvisit.component";
+import { AppComponent } from "./app.component";
+import { HeaderComponent } from "./header/header.component";
 import { HomeComponent } from "./home/home.component";
+import { DetailArea1Component } from "./detail-area1/detail-area1.component";
 import { BookSinAreaComponent } from "./book-sin-area/book-sin-area.component";
 
 const routes: Routes = [
