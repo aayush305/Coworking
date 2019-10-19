@@ -1,3 +1,4 @@
+<head></head>
 <div id="restaurant-menu">
   <div class="section-title text-center center">
     <div class="overlay">
@@ -16,21 +17,27 @@
             <!-- <div class="menu-item-name"></div> -->
             <!-- <div class="menu-item-price"> $35 </div> -->
             <div class="menu-item-description">
-              <div class="bookcontainer">
+              <!--<div class="bookcontainer" >-->
               <img
                 src="../assets/img/portfolio/01-large.jpg"
                 style=" width: 431px;height: 377px;margin-left: 37px;box-shadow: none "
                 class="neel"
               />
               <div class="neel1">
-                  <div class="text22"><button type="submit" name="button" class="btn btn-success">Book Space</button></div>
-                
+                <div class="text22">
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    style="padding : px 20px;"
+                    (click)="myRoute()"
+                  >
+                    Book Space
+                  </button>
+                </div>
               </div>
+              <!--</div>-->
             </div>
-            </div>
-
-           
-        </div>
+          </div>
           <!-- <div class="menu-item">
               <div class="menu-item-name"> Delicious Dish </div>
               <div class="menu-item-price"> $30 </div>

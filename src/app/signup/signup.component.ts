@@ -12,7 +12,7 @@ var temp;
   styleUrls: ["./signup.component.css"]
 })
 export class SignupComponent implements OnInit {
-  model : any={};
+  model: any = {};
   constructor(
     private login: MatDialog,
     private Auth: AuthService,
@@ -52,12 +52,15 @@ export class SignupComponent implements OnInit {
   onCloseSign() {
     isSignOpen = false;
     if (isLogOpen) {
-      var logc: LoginComponent = new LoginComponent(temp,null);
+      var logc: LoginComponent = new LoginComponent(null, null);
       logc.onClose();
     } else {
       this.login.closeAll();
       return;
     }
+  }
+  revIsSignOpen() {
+    isSignOpen = !isSignOpen;
   }
 
   onCreate() {

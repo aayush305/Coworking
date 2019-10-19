@@ -1,4 +1,4 @@
- body,
+body,
 html {
   font-family: "Raleway", sans-serif;
   text-rendering: optimizeLegibility !important;
@@ -701,8 +701,7 @@ label {
 }
 
 .text22 {
-  
-  color:black;
+  color: black;
   font-size: 16px;
   padding: 16px 32px;
 }
@@ -721,13 +720,11 @@ label {
   background-color: transparent;
   color: #fff;
   -webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
-
-
-.bookcontainer {
+style.css .bookcontainer {
   position: relative;
   width: 50%;
 }
@@ -737,12 +734,12 @@ label {
   display: block;
   width: 100%;
   height: auto;
-  transition: .5s ease;
+  transition: 0.5s ease;
   backface-visibility: hidden;
 }
 
 .bookmiddle {
-  transition: .5s ease;
+  transition: 0.5s ease;
   opacity: 0;
   position: absolute;
   top: 50%;
@@ -761,7 +758,7 @@ label {
 }
 
 .booktext {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   font-size: 16px;
   padding: 16px 32px;

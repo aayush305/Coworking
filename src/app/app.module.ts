@@ -20,6 +20,7 @@ import { MaterialModule } from "./material";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { LogoutComponent } from "./logout/logout.component";
 import { DetailArea1Component } from './detail-area1/detail-area1.component';
+import { BookSinAreaComponent } from './book-sin-area/book-sin-area.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { DetailArea1Component } from './detail-area1/detail-area1.component';
     FooterComponent,
     HomeComponent,
     LogoutComponent,
-    DetailArea1Component
+    DetailArea1Component,
+    BookSinAreaComponent
   ],
   imports: [
     BrowserModule,
