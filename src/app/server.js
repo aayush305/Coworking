@@ -286,11 +286,10 @@ app.post("/registerdata", async (req, res) => {
 });
 
 app.post("/remove", async (req, res) => {
-  var email = req.body.email;
   var id = req.body.id;
   var g = await bookarea.findOne({ _id: id });
   // , { seat: 1, areaname: 1, _id: 0 }
-  console.log("jjjjjjjjjjjj" + id + "--" + email);
+  console.log("jjjjjjjjjjjj" + id);
   console.log(g);
   var s = g.seat;
   var juniresseat;
@@ -318,7 +317,7 @@ app.post("/remove", async (req, res) => {
   }
 
   console.log("inside server delete");
-  bookarea.remove({ _id: id, email: email }, function(err) {
+  bookarea.remove({ _id: id }, function(err) {
     if (err) {
       console.log("booking not deleted");
       res.status(500).json({
@@ -350,7 +349,7 @@ app.get("/getallreq", async (req, res) => {
   console.log("inside server getallreq");
   reqvisit.find(function(err, viewlist) {
     if (err) {
-      console.log("Error : finddetail");
+      console.log("Error : getallreq");
       res.send(400);
     } else {
       console.log(viewlist);
@@ -372,18 +371,30 @@ app.post("/finddetail", async (req, res) => {
     }
   });
   var emailregister = false;
-  //console.log("In server");
-  // if (resp) {
-  //   console.log("oh no");
-  //   res.status(200).json({
-  //     datafind: true,
-  //     data: resp
-  //   });
-  // } else {
-  //   res.status(200).json({
-  //     datafind: false
-  //   });
-  // }
+});
+
+app.post("/editarea", async (req, res) => {
+  const areaName = req.body.areaName;
+  const reqSeat = req.body.reqSeat;
+  const reqAmount = req.body.reqAmount;
+  const reqDescr = req.body.reqDescr;
+
+  console.log("inside server editarea");
+  area.updateOne(
+    { name: areaName },
+    { $set: { total: reqSeat, description: reqAmount, amount: reqDescr } },
+    async function(err) {
+      if (err) {
+        console.log("editarea not updated");
+        res.status(500).json({
+          updatebooking: false
+        });
+      } else {
+        console.log("editarea updated");
+        res.json({ update: true });
+      }
+    }
+  );
 });
 
 app.post("/finddetailbyarea", async (req, res) => {

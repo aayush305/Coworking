@@ -39,8 +39,8 @@ export class ViewDetailComponent implements OnInit {
 
   onDelete(data) {
     console.log("inside delete");
-    var email = sessionStorage.getItem("email");
-    this.Auth.removebooking(email, this.viewlist[data]._id);
+    // var email = sessionStorage.getItem("email");
+    this.Auth.removebooking(this.viewlist[data]._id);
   }
 
   onEdit(data) {

@@ -93,6 +93,7 @@ export class EditbookingComponent implements OnInit {
   updateMySpace(editseat, editmonth) {
     var editid = sessionStorage.getItem("editid");
     var editemail = sessionStorage.getItem("email");
+    console.log("----edit data---" + editseat + "---" + editmonth);
     this.Auth.editbooking(editemail, editid, editseat, editmonth);
   }
 }

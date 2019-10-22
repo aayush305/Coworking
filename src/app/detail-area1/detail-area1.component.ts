@@ -58,16 +58,10 @@ export class DetailArea1Component implements OnInit {
         }
       }, 200)
     );
+  }
 
-    // vasnsole.log("session fetchdata" + q);
-
-    // function delay(ms: number) {
-    //   return new Promise(resolve => setTimeout(resolve, ms));
-    // }
-    // async () => {
-    //   // Do something before delay
-    //   console.log("before delay");
-
-    //   await delay(3000);
+  onDelete(dataDelete) {
+    console.log("inside delete");
+    this.auth.removebooking(this.viewlist[dataDelete]._id);
   }
 }

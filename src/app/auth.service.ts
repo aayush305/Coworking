@@ -225,11 +225,11 @@ export class AuthService {
         }
       );
   }
-  removebooking(email, id) {
+  removebooking(id) {
     console.log("Inside removebooking Auth service");
-    console.log(email);
+    // console.log(email);
     this.http
-      .post("http://localhost:8000/remove", { email, id })
+      .post("http://localhost:8000/remove", { id })
       .subscribe((res: any) => {
         if (res.removebook) {
           this.Toastr.success("Booking Successfully Deleted", "Success", {
@@ -252,6 +252,26 @@ export class AuthService {
     console.log("Inside findAllReq Auth service");
 
     return this.http.get("http://localhost:8000/getallreq");
+  }
+
+  editArea(areaName, reqSeat, reqAmount, reqDescr) {
+    console.log("Inside editArea Auth service");
+
+    this.http
+      .post("http://localhost:8000/editarea", {
+        areaName,
+        reqSeat,
+        reqAmount,
+        reqDescr
+      })
+      .subscribe((res: any) => {
+        console.log("view in service-->" + JSON.stringify(res));
+        if (res.update) {
+          this.Toastr.success("Area Data Successfully Updated", "Success", {
+            progressBar: true
+          });
+        }
+      });
   }
 
   findDetailByArea(area) {
