@@ -7,27 +7,37 @@
       <div class="col-lg-6">
         <img
           class="d-block w-100"
-          src="img/product/single-product/s-product-1.jpg"
+          [src]="bookings.fatchData.imgpath"
           alt="First slide"
         />
       </div>
       <div class="col-lg-5 offset-lg-1">
         <div class="s_product_text">
-          <h3>Flexible seats</h3>
-          <h2>{{ price }} per seat</h2>
+          <h3>{{ bookings.fatchData.name }}</h3>
+          <h2>{{ bookings.fatchData.amount }} per seat</h2>
           <ul>
             <li>
               <a> <span>Type</span> : Desk only</a>
             </li>
             <li>
-              <a> <span>Availibility</span> : {{ free }} out of {{ total }}</a>
+              <a>
+                <span>Availibility</span> :
+                {{ bookings.fatchData.total - bookings.fatchData.reserved }} out
+                of {{ bookings.fatchData.total }}</a
+              >
             </li>
           </ul>
           <p>
-            {{ Description }}
+            {{ bookings.description }}
           </p>
           <div class="card_area">
-            <a class="main_btn" routerLink="/bookarea">Book Now</a>
+            <a *ngIf="!isAdmin" class="main_btn" routerLink="/bookarea"
+              >Book Now</a
+            >
+            <a *ngIf="isAdmin" class="main_btn" routerLink="/editBookArea"
+              >Edit</a
+            >
+
             <!--<a class="icon_btn" href="#">
                 <i class="lnr lnr lnr-diamond"></i>
               </a>
@@ -36,6 +46,46 @@
               </a> -->
           </div>
         </div>
+      </div>
+    </div>
+    <div *ngIf="isAdmin">
+      <div class="table-responsive" style="margin-top: 90px;">
+        <!--Table-->
+        <table class="table table-striped">
+          <!--Table head-->
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Email</th>
+              <th>BookedSeat</th>
+              <th>Booking Date</th>
+              <th>Duration</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <!--Table head-->
+
+          <!--Table body-->
+          <tbody>
+            <tr *ngFor="let obj of viewlist; index as id">
+              <td>{{ id + 1 }}</td>
+              <td>{{ obj.email }}</td>
+              <td>{{ obj.seat }}</td>
+              <td>{{ obj.bookdate | date }}</td>
+              <td>{{ obj.duration }}</td>
+              <td>
+                <a
+                  class="fa fa-trash"
+                  style="font-size:20px;color:red"
+                  (click)="onDelete(id)"
+                  >Delete</a
+                >
+              </td>
+            </tr>
+          </tbody>
+          <!--Table body-->
+        </table>
+        <!--Table-->
       </div>
     </div>
   </div>

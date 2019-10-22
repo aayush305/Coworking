@@ -1,4 +1,4 @@
- body,
+body,
 html {
   font-family: "Raleway", sans-serif;
   text-rendering: optimizeLegibility !important;
@@ -267,31 +267,31 @@ header .intro-text {
   margin: 15px 0 30px;
 }
 /* Menu Section */
-#restaurant-menu {
+#bookspace {
   padding: 0 0 60px 0;
 }
-#restaurant-menu .section-title {
+#bookspace .section-title {
   background: #444 url(/assets/img/menu-bg.jpg) center center no-repeat fixed;
   background-size: cover;
 }
-#restaurant-menu .section-title h2 {
+#bookspace .section-title h2 {
   color: #fff;
 }
-#restaurant-menu img {
+#bookspace img {
   width: 300px;
   box-shadow: 15px 0 #a7c44c;
 }
-#restaurant-menu h3 {
+#bookspace h3 {
   padding: 10px 0;
   text-transform: uppercase;
 }
-#restaurant-menu .menu-section hr {
+#bookspace .menu-section hr {
   margin: 0 auto;
 }
-#restaurant-menu .menu-section {
+#bookspace .menu-section {
   margin: 0 20px 80px;
 }
-#restaurant-menu .menu-section-title {
+#bookspace .menu-section-title {
   font-size: 26px;
   display: block;
   font-weight: 500;
@@ -299,21 +299,21 @@ header .intro-text {
   margin: 20px 0;
   text-align: center;
 }
-#restaurant-menu .menu-item {
+#bookspace .menu-item {
   margin: 35px 0;
   font-size: 18px;
 }
-#restaurant-menu .menu-item-name {
+#bookspace .menu-item-name {
   font-weight: 600;
   font-size: 17px;
   color: #555;
   border-bottom: 2px dotted rgb(213, 213, 213);
 }
-#restaurant-menu .menu-item-description {
+#bookspace .menu-item-description {
   font-style: italic;
   font-size: 15px;
 }
-#restaurant-menu .menu-item-price {
+#bookspace .menu-item-price {
   float: right;
   font-weight: 600;
   color: #555;
@@ -701,12 +701,9 @@ label {
 }
 
 .text22 {
-  
-  color:black;
+  color: black;
   font-size: 16px;
   padding: 30px 42px;
-  
-  
 }
 
 .custom-dialog-container .mat-dialog-container {
@@ -723,16 +720,13 @@ label {
   background-color: transparent;
   color: #fff;
   -webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
-
-
 
 .bookcontainer {
   position: relative;
   width: 50%;
-  
 }
 
 .bookimage {
@@ -740,12 +734,12 @@ label {
   display: block;
   width: 100%;
   height: auto;
-  transition: .5s ease;
+  transition: 0.5s ease;
   backface-visibility: hidden;
 }
 
 .bookmiddle {
-  transition: .5s ease;
+  transition: 0.5s ease;
   opacity: 0;
   position: absolute;
   top: 50%;
@@ -764,7 +758,7 @@ label {
 }
 
 .booktext {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   font-size: 16px;
   padding: 16px 32px;

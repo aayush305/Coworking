@@ -19,10 +19,27 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { LogoutComponent } from "./logout/logout.component";
-import { OtpComponent } from './otp/otp.component';
-import { DetailArea1Component } from './detail-area1/detail-area1.component';
-import { BookSinAreaComponent } from './book-sin-area/book-sin-area.component';
+import { OtpComponent } from "./otp/otp.component";
+import { DetailArea1Component } from "./detail-area1/detail-area1.component";
+import { BookSinAreaComponent } from "./book-sin-area/book-sin-area.component";
+import { ViewDetailComponent } from "./view-detail/view-detail.component";
+import { EditbookingComponent } from "./editbooking/editbooking.component";
+import { RouterModule, Routes } from "@angular/router";
+import { EditBookAreaComponent } from './edit-book-area/edit-book-area.component';
+import { ViewVisitReqComponent } from './view-visit-req/view-visit-req.component';
 
+const routes: Routes = [
+  { path: "", component: HomeComponent },
+  { path: "area1", component: DetailArea1Component },
+  { path: "bookarea", component: BookSinAreaComponent },
+  { path: "viewdetail", component: ViewDetailComponent },
+  { path: "editdetail", component: EditbookingComponent },
+  { path: "team", component: TeamComponent },
+  { path: "reqvisit", component: ReqvisitComponent },
+  { path: "about", component: AboutComponent },
+  { path: "bookspace", component: BookspaceComponent },
+  { path: "editdetail", component: EditbookingComponent }
+];
 
 @NgModule({
   declarations: [
@@ -39,7 +56,11 @@ import { BookSinAreaComponent } from './book-sin-area/book-sin-area.component';
     LogoutComponent,
     OtpComponent,
     DetailArea1Component,
-    BookSinAreaComponent
+    BookSinAreaComponent,
+    ViewDetailComponent,
+    EditbookingComponent,
+    EditBookAreaComponent,
+    ViewVisitReqComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +70,9 @@ import { BookSinAreaComponent } from './book-sin-area/book-sin-area.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    RouterModule.forRoot(routes, {
+      anchorScrolling: "enabled"
+    }),
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: "toast-top-right",
@@ -57,6 +81,6 @@ import { BookSinAreaComponent } from './book-sin-area/book-sin-area.component';
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent, SignupComponent,OtpComponent]
+  entryComponents: [LoginComponent, SignupComponent, OtpComponent]
 })
 export class AppModule {}

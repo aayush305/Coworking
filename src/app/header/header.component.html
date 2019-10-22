@@ -12,20 +12,34 @@
         <span class="icon-bar"></span> <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand page-scroll" href="#page-top">Touché</a>
+      <a class="navbar-brand page-scroll" routerLink="">Touché</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#request" class="page-scroll">Request Visit</a></li>
         <li>
-          <a href="#restaurant-menu" class="page-scroll">BOOK SPACE</a>
+          <a [routerLink]="['/']" fragment="request" class="page-scroll"
+            >Request Visit</a
+          >
         </li>
-        <li><a href="#portfolio" class="page-scroll">Gallery</a></li>
-        <li><a href="#team" class="page-scroll">Chefs</a></li>
-        <li><a href="#about" class="page-scroll">About</a></li>
-        <li><a href="#call-reservation" class="page-scroll">Contact</a></li>
+        <li>
+          <a [routerLink]="['/']" fragment="bookspace" class="page-scroll"
+            >BOOK SPACE</a
+          >
+        </li>
+        <!-- <li><a href="#portfolio" class="page-scroll">Gallery</a></li> -->
+        <li>
+          <a class="page-scroll" [routerLink]="['/']" fragment="team">Chefs</a>
+        </li>
+        <li>
+          <a [routerLink]="['/']" fragment="about" class="page-scroll">About</a>
+        </li>
+        <li>
+          <a [routerLink]="['/']" fragment="footer" class="page-scroll"
+            >Contact</a
+          >
+        </li>
         <li></li>
         <li>
           <a
@@ -43,15 +57,25 @@
             >Logout</a
           >
         </li>
-        <li>
+        <li *ngIf="!isAdmin">
           <a *ngIf="!islogged" class="page-scroll" (click)="onCreateSign()"
             >Sign Up</a
           >
-          <a *ngIf="islogged" class="page-scroll" (click)="onCreateSign()"
+          <a *ngIf="islogged" class="page-scroll" routerLink="/viewdetail"
             >View Profile</a
+          >
+        </li>
+
+        <li *ngIf="isAdmin">
+          <a *ngIf="!islogged" class="page-scroll" (click)="onCreateSign()"
+            >Sign Up</a
+          >
+          <a *ngIf="islogged" class="page-scroll" routerLink="/viewreqvisit"
+            >View Visit</a
           >
         </li>
       </ul>
     </div>
   </div>
 </nav>
+<router-outlet></router-outlet>

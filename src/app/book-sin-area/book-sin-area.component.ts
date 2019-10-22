@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { isUndefined } from "util";
 import { AuthService } from "../auth.service";
+import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-book-sin-area",
@@ -17,10 +19,22 @@ export class BookSinAreaComponent implements OnInit {
   public totPrice: Number;
   public reqValid: boolean;
   public reqSeat: Number;
+  public imgPath: string;
   public reqMonth: Number;
-  constructor(private Auth: AuthService) {}
+  constructor(
+    private Auth: AuthService,
+    private router: Router,
+    private Toastr: ToastrService
+  ) {}
 
   async ngOnInit() {
+    if (!sessionStorage.getItem("email")) {
+      // window.scroll(0, 0);
+      this.Toastr.error("Please first login", "Error", {
+        progressBar: true
+      });
+      this.router.navigate([""]);
+    }
     var data = await sessionStorage.getItem("fetchData");
     console.log("-----A->" + JSON.stringify(data));
     data = JSON.parse(data);
@@ -34,6 +48,7 @@ export class BookSinAreaComponent implements OnInit {
       this.Description = data["description"];
       this.free = this.total - this.resv;
       this.reqValid = true;
+      this.imgPath = data["imgpath"];
       this.totPrice = 0;
 
       // console.log(
@@ -72,5 +87,18 @@ export class BookSinAreaComponent implements OnInit {
   bookMySpace() {
     console.log("Seat----->" + this.reqSeat);
     if (this.reqValid) this.Auth.bookArea(this.reqSeat, this.reqMonth);
+    function delay(ms: number) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    (async () => {
+      // Do something before delay
+      console.log("before delay");
+
+      await delay(2000);
+
+      // Do something after
+      console.log("after delay");
+      this.router.navigate(["/viewdetail"]);
+    })();
   }
 }
