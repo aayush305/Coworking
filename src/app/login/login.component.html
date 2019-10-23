@@ -1,6 +1,6 @@
 <div id="body">
   <!-- <div id="unblurred"> -->
-  <form  #nf="ngForm" (ngSubmit)="loginevent($event)" novalidate>
+  <form #nf="ngForm" (ngSubmit)="loginevent($event)" novalidate>
     <div class="container">
       <section id="content">
         <div id="form">
@@ -9,7 +9,6 @@
             <input
               type="email"
               placeholder="Email"
-              
               id="email"
               name="email"
               [(ngModel)]="model.email"
@@ -17,52 +16,63 @@
               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
               required
             />
-            <div *ngIf="!mailvalid.valid && mailvalid.touched" class="alert alert-danger">
-                <div *ngIf="mailvalid.errors?.required">
-                    Email is required!
-                </div>
-                <div *ngIf="mailvalid.errors?.pattern">
-                    Invalid Email!
-                </div>
+            <div
+              *ngIf="!mailvalid.valid && mailvalid.touched"
+              class="alert alert-danger"
+            >
+              <div *ngIf="mailvalid.errors?.required">
+                Email is required!
               </div>
+              <div *ngIf="mailvalid.errors?.pattern">
+                Invalid Email!
+              </div>
+            </div>
           </div>
           <div>
             <input
               type="password"
               placeholder="Password"
-              
               id="password"
               name="password"
               [(ngModel)]="model.password"
               #passvalid="ngModel"
               minlength="6"
-              required  
+              required
             />
-            <div *ngIf="!passvalid.valid && passvalid.touched" class="alert alert-danger">
-               <div *ngIf="passvalid.errors?.required">
-                    password is required!
-                </div>
-                <div *ngIf="passvalid.errors?.minlength">
-                    MinimumLength of 6 required!
-                </div>
+            <div
+              *ngIf="!passvalid.valid && passvalid.touched"
+              class="alert alert-danger"
+            >
+              <div *ngIf="passvalid.errors?.required">
+                password is required!
               </div>
+              <div *ngIf="passvalid.errors?.minlength">
+                MinimumLength of 6 required!
+              </div>
+            </div>
           </div>
           <div>
             <!-- <input style="margin-left: 40px;" type="button" value="Log in" (click)="loginevent($event)"/> -->
-            <button type="submit" name="button" class="btn btn-success" [disabled]="nf.invalid" style="margin-left: 40px;" >Log in</button>
-       
-           <input
+            <button
+              type="submit"
+              name="button"
+              class="btn btn-success"
+              [disabled]="nf.invalid"
+              style="margin-left: 40px;"
+            >
+              Log in
+            </button>
+
+            <input
               style="margin-left: 45px;"
               type="button"
               value="Cancel"
-            
               (click)="onClose()"
             />
-          
-          
-            <button type="button" style="margin-bottom: 30px; font-size: 12px;" class="btn btn-success" (click)="onForgot()"
-            >Forgot Password</button>
-            
+
+            <a style="margin-bottom: 30px; font-size: 14px;" (click)="onForgot()"
+              >Forgot your password?</a
+            >
             <a
               style="margin-bottom: 30px; font-size: 14px;"
               (click)="onCreateSign()"
@@ -78,5 +88,4 @@
     <!-- container -->
     <!-- </div> -->
   </form>
-  
 </div>

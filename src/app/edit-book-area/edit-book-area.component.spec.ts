@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewDetailComponent } from './view-detail.component';
+import { EditBookAreaComponent } from './edit-book-area.component';
 
-describe('ViewDetailComponent', () => {
-  let component: ViewDetailComponent;
-  let fixture: ComponentFixture<ViewDetailComponent>;
+describe('EditBookAreaComponent', () => {
+  let component: EditBookAreaComponent;
+  let fixture: ComponentFixture<EditBookAreaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewDetailComponent ]
+      declarations: [ EditBookAreaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewDetailComponent);
+    fixture = TestBed.createComponent(EditBookAreaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

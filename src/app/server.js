@@ -147,7 +147,7 @@ app.post("/findarea", async (req, res) => {
   console.log("Inside Server findArea");
   console.log(req.body);
   const { areaName } = req.body;
-  const resp = await area.findOne({ name: "abcd" });
+  const resp = await area.findOne({ name: areaName });
 
   console.log("Area Passed :" + areaName);
   console.log("response" + JSON.stringify(resp));
@@ -172,7 +172,7 @@ app.post("/login", async (req, res) => {
   console.log(req.body);
   const { email, password } = req.body;
   const resp = await signup.findOne({ email, password });
-  console.log("email and pass by user:" + email + " " + password);
+  // console.log("email and pass by user:" + email + " " + password);
   console.log("response" + resp);
 
   if (!resp) {
@@ -264,17 +264,15 @@ app.post("/registerdata", async (req, res) => {
   });
 });
 
-
 app.post("/sendmail", async (req, res) => {
   const email = req.body.e;
-  console.log("in server send mail"+email);
-  const ef= await signup.findOne({ email });
-  if(ef)
-  {
-      console.log("email found in sendmail")
-      
-      console.log("in server send mail"+email);
-      var options = {
+  console.log("in server send mail" + email);
+  const ef = await signup.findOne({ email });
+  if (ef) {
+    console.log("email found in sendmail");
+
+    console.log("in server send mail" + email);
+    var options = {
       min: 1000,
       max: 9999,
       integer: true
@@ -298,56 +296,259 @@ app.post("/sendmail", async (req, res) => {
       subject: "otp verification",
       text: "Your Otp is:" + num
     };
-    transporter.sendMail(info,async function(error, data) {
+    transporter.sendMail(info, async function(error, data) {
       if (error) {
         console.log("Mail failed");
         res.status(500).json({
           is: false
-
         });
       } else {
         console.log("mail success.");
-        
-      res.status(200).json({
-          is:true,
-          sende:email,
+
+        res.status(200).json({
+          is: true,
+          sende: email,
           code: num
-        
         });
-        console.log('after res')
-        
+        console.log("after res");
       }
-    })
+    });
+  } else {
+    res.status(200).json({
+      efound: false
+    });
   }
-    else{
-      res.status(200).json({
-        efound: false
-      });
-    }
-
-  });
-
-
-  app.post("/setnewpassword", async (req, res) => {
-    const em = req.body.ne;
-    const ep = req.body.np;
-    
-    var result=await signup.updateOne({email:em},{$set:{password:ep}});
-    if(result)
-    {
-      res.status(200).json({
-        newpass: true
-      });
-    }
-    else{
-      res.status(200).json({
-        newpass: false
-      });
-    }
-  
-
 });
 
+app.post("/setnewpassword", async (req, res) => {
+  const em = req.body.ne;
+  const ep = req.body.np;
 
+  var result = await signup.updateOne(
+    { email: em },
+    { $set: { password: ep } }
+  );
+  if (result) {
+    res.status(200).json({
+      newpass: true
+    });
+  } else {
+    res.status(200).json({
+      newpass: false
+    });
+  }
+});
+
+app.post("/remove", async (req, res) => {
+  var id = req.body.id;
+  var g = await bookarea.findOne({ _id: id });
+  // , { seat: 1, areaname: 1, _id: 0 }
+  console.log("jjjjjjjjjjjj" + id);
+  console.log(g);
+  var s = g.seat;
+  var juniresseat;
+  if (g) {
+    console.log("resp found in remove");
+    const data = await area.findOne({ name: g.areaname });
+    // , { reserved: 1, _id: 0 }
+    console.log("data--->." + data);
+    var juniresseat = data.reserved;
+    console.log("My seats====" + s + "Total res seat====" + juniresseat);
+    console.log(juniresseat);
+    var naviresseat = juniresseat - s;
+    console.log(naviresseat);
+    const update = await area.updateOne(
+      { name: g.areaname },
+      { $set: { reserved: naviresseat } }
+    );
+    if (update) {
+      console.log("at a time of remove succesfully updated reserved");
+    } else {
+      console.log("at a time of remove not updated reserved");
+    }
+  } else {
+    console.log("resp not found in remove");
+  }
+
+  console.log("inside server delete");
+  bookarea.remove({ _id: id }, function(err) {
+    if (err) {
+      console.log("booking not deleted");
+      res.status(500).json({
+        removebook: false
+      });
+    } else {
+      console.log("booking deleted");
+
+      res.status(200).json({
+        removebook: true
+      });
+    }
+  });
+
+  // //console.log("In server");
+  // console.log(resp);
+  // if (resp) {
+  //   res.status(200).json({
+  //     removbook: true
+  //   });
+  // } else {
+  //   res.status(200).json({
+  //     removbook: false
+  //   });
+  // }
+});
+
+app.get("/getallreq", async (req, res) => {
+  console.log("inside server getallreq");
+  reqvisit.find(function(err, viewlist) {
+    if (err) {
+      console.log("Error : getallreq");
+      res.send(400);
+    } else {
+      console.log(viewlist);
+      res.send(viewlist);
+    }
+  });
+});
+
+app.post("/finddetail", async (req, res) => {
+  const email = req.body.email;
+  console.log("inside server viewdetail");
+  bookarea.find({ email }, function(err, viewlist) {
+    if (err) {
+      console.log("Error : finddetail");
+      res.send(400);
+    } else {
+      console.log(viewlist);
+      res.send(viewlist);
+    }
+  });
+  var emailregister = false;
+});
+
+app.post("/editarea", async (req, res) => {
+  const areaName = req.body.areaName;
+  const reqSeat = req.body.reqSeat;
+  const reqAmount = req.body.reqAmount;
+  const reqDescr = req.body.reqDescr;
+
+  console.log("inside server editarea");
+  area.updateOne(
+    { name: areaName },
+    { $set: { total: reqSeat, amount: reqAmount, description: reqDescr } },
+    async function(err) {
+      if (err) {
+        console.log("editarea not updated");
+        res.status(500).json({
+          updatebooking: false
+        });
+      } else {
+        console.log("editarea updated");
+        res.json({ update: true });
+      }
+    }
+  );
+});
+
+app.post("/finddetailbyarea", async (req, res) => {
+  const area = req.body.area;
+  var isData;
+  console.log("inside server finddetailbyarea");
+  bookarea.find({ areaname: area }, function(err, viewlist) {
+    if (err) {
+      console.log("Error : finddetailbyarea");
+      res.send(400);
+    } else {
+      console.log("My area list" + viewlist);
+      if (JSON.stringify(viewlist).length > 3) {
+        isData = true;
+      } else {
+        isData = false;
+      }
+      res.json({ myView: viewlist, isData: isData });
+    }
+  });
+  var emailregister = false;
+  //console.log("In server");
+  // if (resp) {
+  //   console.log("oh no");
+  //   res.status(200).json({
+  //     datafind: true,
+  //     data: resp
+  //   });
+  // } else {
+  //   res.status(200).json({
+  //     datafind: false
+  //   });
+  // }
+});
+
+app.post("/editdetail", async (req, res) => {
+  const email = req.body.editemail;
+  const id = req.body.editid;
+  const seat = req.body.editseat;
+  const month = req.body.editmonth;
+  const oldSeat = req.body.oldSeat;
+  const areaName = req.body.areaName;
+  console.log("inside server editdetail");
+  var l = await bookarea.findOne({ _id: id });
+  var k = l.areaname;
+
+  var areadetail = await area.findOne({ name: k });
+  var oprice = areadetail.amount;
+  const nprice = Number(month) * Number(seat) * Number(oprice);
+
+  await bookarea.updateOne(
+    { _id: id, email: email },
+    { $set: { seat: seat, duration: month, price: nprice } },
+    async function(err) {
+      if (err) {
+        console.log("booking not updated");
+        res.status(500).json({
+          updatebooking: false
+        });
+      } else {
+        console.log("booking updated");
+        var g = await bookarea.findOne({ _id: id });
+        var a = g.areaname;
+        console.log(a);
+        var datadetail = await area.findOne({ name: a });
+        oseat = datadetail.reserved;
+        if (oldSeat > seat) {
+          var nseat = Number(oseat) + Number(seat);
+        } else {
+          var nseat = oseat - seat;
+        }
+        const up = await area.updateOne(
+          { name: a },
+          { $set: { reserved: nseat } }
+        );
+        if (up) {
+          console.log("in edit detail successfully update reserved");
+        } else {
+          console.log("in edit detail not update reserved");
+        }
+        // // , { reserved: 1, _id: 0 }
+        // console.log("data--->." + data);
+        // var newSeat = data.reserved;
+        // newSeat = Number(newSeat) + Number(seat) - Number(oldSeat);
+        // console.log("New Seat-->" + newSeat + "  id:" + id);
+        // const resChange = await area.updateOne(
+        //   { _id: id },
+        //   { $set: { reserved: newSeat } }
+        // );
+        // if (resChange) {
+        //   console.log(resChange);
+        // } else {
+        //   console.log("Not updated");
+        // }
+        res.status(200).json({
+          updatebooking: true
+        });
+      }
+    }
+  );
+});
 
 app.listen(8000, () => console.log("server is listening at 8000"));

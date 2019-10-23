@@ -1,0 +1,38 @@
+.card_area[_ngcontent-otb-c8] .main_btn[_ngcontent-otb-c8] {
+  line-height: 38px;
+  padding: 0px 38px;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+.main_btn[_ngcontent-otb-c8]:hover {
+  background: transparent;
+  color: #71cd14;
+}
+a[_ngcontent-otb-c8]:hover,
+a[_ngcontent-otb-c8]:focus {
+  text-decoration: none;
+  outline: none;
+}
+a[_ngcontent-otb-c8]:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+.main_btn[_ngcontent-otb-c8] {
+  display: inline-block;
+  background: #71cd14;
+  padding: 0px 32px;
+  letter-spacing: 0.25px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 44px;
+  outline: none !important;
+  box-shadow: none !important;
+  text-align: center;
+  border: 1px solid #71cd14;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 300ms linear 0s;
+  border-radius: 5px;
+}

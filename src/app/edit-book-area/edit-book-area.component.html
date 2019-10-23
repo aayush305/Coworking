@@ -1,0 +1,75 @@
+<!-- {{ editData.fatchData | json }} -->
+<div style="margin-top: 90px;">
+  <div
+    class="product_image_area"
+    style="padding-bottom: 50px; margin-top: 100px;"
+  >
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-lg-6">
+          <img
+            class="d-block w-100"
+            [src]="editData.imgpath"
+            alt="First slide"
+          />
+        </div> -->
+        <div class="col-lg-5 offset-lg-1">
+          <div class="s_product_text">
+            <h3>{{ areaName }}</h3>
+            <ul>
+              <li>
+                Enter new Total Seats:<input
+                  type="number"
+                  style="width:150%"
+                  id="reqTotSeat"
+                  [(ngModel)]="reqTotSeat"
+                  class="form-control"
+                  placeholder="Enter new Total Seats:"
+                  required="required"
+                  min="1"
+                  [max]="free"
+                />
+              </li>
+              <li style="margin-top: 10px;">
+                Enter updated Amounts:<input
+                  type="number"
+                  style="width:150%"
+                  id="reqAmount"
+                  [(ngModel)]="reqAmount"
+                  class="form-control"
+                  placeholder="Enter updated Amounts"
+                  required="required"
+                  min="1"
+                  max="24"
+                />
+              </li>
+              <li style="margin-top: 10px;">
+                Enter updated Description:<input
+                  type="text"
+                  style="width:150%"
+                  id="reqDescription"
+                  [(ngModel)]="reqDescription"
+                  class="form-control"
+                  placeholder="Enter updated Description"
+                  required="required"
+                  min="1"
+                  max="24"
+                />
+              </li>
+            </ul>
+            <div class="card_area">
+              <button
+                type="submit"
+                value="submit"
+                class="btn btn-success"
+                (click)="getChange()"
+              >
+                Confirm Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

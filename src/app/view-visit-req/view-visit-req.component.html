@@ -4,37 +4,29 @@
     <!--Table head-->
     <thead>
       <tr>
-        <th>No</th>
-        <th>BookedSeat</th>
-        <th>Booking Date</th>
-        <th>Duration</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Request No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <!-- <th>Delete</th> -->
       </tr>
     </thead>
+    <!--Table head-->
+
+    <!--Table body-->
     <tbody>
       <tr *ngFor="let obj of viewlist; index as id">
         <td>{{ id + 1 }}</td>
-        <td>{{ obj.areaname }}</td>
-        <td>{{ obj.seat }}</td>
-        <td>{{ obj.bookdate | date }}</td>
-        <td>{{ obj.duration }}</td>
-        <td>
-          <a
-            class="fa fa-edit"
-            style="font-size:20px;color:orange"
-            (click)="onEdit(id)"
-            >Edit</a
-          >
-        </td>
-        <td>
+        <td>{{ obj.name }}</td>
+        <td>{{ obj.email }}</td>
+        <td>{{ obj.mn }}</td>
+        <!-- <td>
           <a
             class="fa fa-trash"
             style="font-size:20px;color:red"
             (click)="onDelete(id)"
             >Delete</a
           >
-        </td>
+        </td> -->
       </tr>
     </tbody>
     <!--Table body-->

@@ -1,15 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../auth.service";
-import { isUndefined } from "util";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 
 @Component({
-  selector: "app-view-detail",
-  templateUrl: "./view-detail.component.html",
-  styleUrls: ["./view-detail.component.css"]
+  selector: "app-view-visit-req",
+  templateUrl: "./view-visit-req.component.html",
+  styleUrls: ["./view-visit-req.component.css"]
 })
-export class ViewDetailComponent implements OnInit {
+export class ViewVisitReqComponent implements OnInit {
   public viewareaname: String;
   public viewemail: String;
   public bookedseat: String;
@@ -30,8 +29,7 @@ export class ViewDetailComponent implements OnInit {
       });
       this.router.navigate([""]);
     }
-    var email = sessionStorage.getItem("email");
-    this.Auth.finddetail(email).subscribe(data => {
+    this.Auth.findAllReq().subscribe(data => {
       this.viewlist = data;
       console.log("in init of view detail");
     });
@@ -39,23 +37,7 @@ export class ViewDetailComponent implements OnInit {
 
   onDelete(data) {
     console.log("inside delete");
-    // var email = sessionStorage.getItem("email");
-    this.Auth.removebooking(this.viewlist[data]._id);
-  }
-
-  onEdit(data) {
-    console.log("inside Edit");
     var email = sessionStorage.getItem("email");
-    sessionStorage.setItem("editid", this.viewlist[data]._id);
-    var mydata = {
-      area: this.viewlist[data].areaname,
-      oldSeat: this.viewlist[data].seat
-    };
-
-    this.router.navigateByUrl("/editdetail", {
-      state: {
-        forData: mydata
-      }
-    });
+    // this.Auth.removebooking(email, this.viewlist[data]._id);
   }
 }
