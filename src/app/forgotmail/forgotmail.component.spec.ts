@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewVisitReqComponent } from './view-visit-req.component';
+import { ForgotmailComponent } from './forgotmail.component';
 
-describe('ViewVisitReqComponent', () => {
-  let component: ViewVisitReqComponent;
-  let fixture: ComponentFixture<ViewVisitReqComponent>;
+describe('ForgotmailComponent', () => {
+  let component: ForgotmailComponent;
+  let fixture: ComponentFixture<ForgotmailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewVisitReqComponent ]
+      declarations: [ ForgotmailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewVisitReqComponent);
+    fixture = TestBed.createComponent(ForgotmailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

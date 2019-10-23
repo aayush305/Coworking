@@ -1,0 +1,50 @@
+<div id="body">
+    <!-- <div id="unblurred"> -->
+    <form  #nf="ngForm" (ngSubmit)="onemailEnter($event)" novalidate>
+      <div class="container">
+        <section id="content">
+          <div id="form">
+            <h1>Enter Email</h1>
+            <div>
+              <input
+                type="email"
+                placeholder="Enter Email"
+                id="e"
+                name="e"
+                required
+              />
+             
+            </div>
+            
+            </div>
+            <div>
+              <!-- <input style="margin-left: 40px;" type="button" value="Log in" (click)="loginevent($event)"/> -->
+              <button type="submit" name="button" class="btn btn-success" style="margin-left: 40px;"  >Log in</button>
+              </div>
+           
+           
+             <input
+                style="margin-left: 45px;"
+                type="button"
+                value="Cancel"
+              
+                (click)="onClose()"
+              />
+            
+            
+        
+            
+          
+          <!-- </form> -->
+          <!-- form -->
+        </section>
+        <!-- content -->
+      </div>
+      <!-- container -->
+      <!-- </div> -->
+    </form>
+    
+  </div>
+  
+
+

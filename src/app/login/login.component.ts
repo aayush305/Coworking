@@ -3,6 +3,8 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { AuthService } from "../auth.service";
 import { SignupComponent, isSignOpen } from "../signup/signup.component";
+import { ForgotComponent} from "../forgot/forgot.component";
+import {Router} from "@angular/router"
 
 export var isLogOpen: boolean;
 @Component({
@@ -12,7 +14,7 @@ export var isLogOpen: boolean;
 })
 export class LoginComponent implements OnInit {
   model: any = {};
-  constructor(private login: MatDialog, private Auth: AuthService) {
+  constructor(private login: MatDialog, private Auth: AuthService,private router:Router) {
     isLogOpen = true;
   }
   ngOnInit() {}
@@ -55,5 +57,12 @@ export class LoginComponent implements OnInit {
       matConfig.panelClass = "custom-dialog-container";
       this.login.open(SignupComponent, matConfig);
     }
+  }
+
+
+  onForgot()
+  {
+    this.login.closeAll();
+    this.router.navigate(["./forgot"])
   }
 }

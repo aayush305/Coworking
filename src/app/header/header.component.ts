@@ -5,7 +5,6 @@ import { LoginComponent, isLogOpen } from "../login/login.component";
 import { AuthService } from "../auth.service";
 import { Subscription } from "rxjs";
 import { SignupComponent, isSignOpen } from "../signup/signup.component";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "app-header",
@@ -14,29 +13,15 @@ import { Router } from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
   public authSub: Subscription;
-  public adminSub: Subscription;
   public user = "";
   public islogged = false;
-  public isAdmin: boolean;
-  constructor(
-    private login: MatDialog,
-    private Auth: AuthService,
-    private router: Router
-  ) {
+  constructor(private login: MatDialog, private Auth: AuthService) {
     this.authSub = this.Auth.getAuthListner().subscribe(data => {
-      this.islogged = data;
-    });
-    this.adminSub = this.Auth.getAdminListner().subscribe(isAdm => {
-      this.isAdmin = isAdm;
-    });
-  }
+    this.islogged = data;
+  });
+}
   // status=this.Auth.islogged()
   ngOnInit() {
-    if (sessionStorage.getItem("admin")) {
-      this.isAdmin = true;
-    } else {
-      this.isAdmin = false;
-    }
     this.islogged = this.Auth.getAuthStatus();
   }
 
@@ -61,6 +46,5 @@ export class HeaderComponent implements OnInit {
   onLogout() {
     sessionStorage.clear();
     this.islogged = false;
-    this.router.navigate([""]);
   }
 }

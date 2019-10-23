@@ -4,26 +4,41 @@
     <!--Table head-->
     <thead>
       <tr>
-        <th>No</th>
-        <th>BookedSeat</th>
-        <th>Booking Date</th>
-        <th>Duration</th>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Delivery Title</th>
+        <th>PickUp Date</th>
+        <th>PickUp Location</th>
+        <th>Delivery Location</th>
+        <th>View</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
     </thead>
+    <!--Table head-->
+
+    <!--Table body-->
     <tbody>
-      <tr *ngFor="let obj of viewlist; index as id">
-        <td>{{ id + 1 }}</td>
-        <td>{{ obj.areaname }}</td>
-        <td>{{ obj.seat }}</td>
-        <td>{{ obj.bookdate | date }}</td>
-        <td>{{ obj.duration }}</td>
+      <tr>
+        <th scope="row">1</th>
+        <td>Darsh</td>
+        <td>Ready To Move</td>
+        <td>19/10/2019</td>
+        <td>Nadiad</td>
+        <td>Navsari</td>
+        <td>
+          <a
+            class="fa fa-eye"
+            style="text-decoration: none;font-size: 20px;color: green;"
+            [routerLink]="['/home']"
+            >View</a
+          >
+        </td>
         <td>
           <a
             class="fa fa-edit"
-            style="font-size:20px;color:orange"
-            (click)="onEdit(id)"
+            style="font-size:20px;color:yellow"
+            [routerLink]="['/home']"
             >Edit</a
           >
         </td>
@@ -31,7 +46,7 @@
           <a
             class="fa fa-trash"
             style="font-size:20px;color:red"
-            (click)="onDelete(id)"
+            [routerLink]="['/home']"
             >Delete</a
           >
         </td>
