@@ -1,0 +1,35 @@
+<div class="table-responsive" style="margin-top: 90px; min-height: 71vh; ">
+  <!--Table-->
+  <table class="table table-striped">
+    <!--Table head-->
+    <thead>
+      <tr>
+        <th>Request No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <!-- <th>Delete</th> -->
+      </tr>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <tbody>
+      <tr *ngFor="let obj of viewlist; index as id">
+        <td>{{ id + 1 }}</td>
+        <td>{{ obj.name }}</td>
+        <td>{{ obj.email }}</td>
+        <td>{{ obj.mn }}</td>
+        <!-- <td>
+          <a
+            class="fa fa-trash"
+            style="font-size:20px;color:red"
+            (click)="onDelete(id)"
+            >Delete</a
+          >
+        </td> -->
+      </tr>
+    </tbody>
+    <!--Table body-->
+  </table>
+  <!--Table-->
+</div>

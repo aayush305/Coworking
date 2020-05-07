@@ -1,0 +1,67 @@
+<div
+  class="product_image_area"
+  style="padding-bottom: 50px; margin-top: 100px;"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <img
+          [src]="imgPath"
+          style=" width: 450px;height: 450px;margin-left: 37px;box-shadow: none;border:1px solid #5cb85c;border-radius: 10px 10px 10px 10px; "
+          class="myCustom"
+        />
+      </div>
+      <div class="col-lg-5 offset-lg-1">
+        <div class="s_product_text">
+          <h3>{{ areaName }}</h3>
+          <ul>
+            <li>
+              Enter Required Seats:<input
+                type="number"
+                style="width:150%"
+                id="reqSeat"
+                class="form-control"
+                placeholder="Enter Required Seats"
+                required="required"
+                min="1"
+                [max]="free"
+                (input)="checkSeats($event.target.value)"
+              />
+            </li>
+            <li style="margin-top: 10px;">
+              Enter Months:<input
+                type="number"
+                style="width:150%"
+                id="reqMonth"
+                class="form-control"
+                placeholder="Enter Months"
+                required="required"
+                min="1"
+                max="24"
+                (input)="calcutePrice($event.target.value)"
+              />
+            </li>
+            <li>
+              <h2 *ngIf="reqValid">Total Price to pay: {{ totPrice }}</h2>
+              <h2 *ngIf="!reqValid">
+                Available seats are only {{ free }} and max months are 24
+              </h2>
+            </li>
+          </ul>
+          <p>
+            {{ Description }}
+          </p>
+          <div class="card_area">
+            <a class="main_btn" (click)="bookMySpace()">Confirm Book</a>
+            <!--<a class="icon_btn" href="#">
+                <i class="lnr lnr lnr-diamond"></i>
+              </a>
+              <a class="icon_btn" href="#">
+                <i class="lnr lnr lnr-heart"></i>
+              </a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

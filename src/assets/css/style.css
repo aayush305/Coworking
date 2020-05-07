@@ -6,7 +6,11 @@ html {
   color: #777;
   font-weight: 300;
   width: 100% !important;
-  height: 100% !important;
+  min-height: 100vh;
+}
+body {
+  position: relative;
+  min-height: 80vh;
 }
 h2 {
   margin: 0 0 20px 0;
@@ -106,8 +110,8 @@ a:focus,
   transition: all 0.8s;
 }
 #menu.navbar-default {
-  background-color: rgba(248, 248, 248, 0);
-  border-color: rgba(231, 231, 231, 0);
+  background-color: #262626 !important;
+  border-color: #262626 !important;
 }
 #menu a.navbar-brand {
   font-family: "Dancing Script", cursive;
@@ -116,6 +120,7 @@ a:focus,
   font-weight: 700;
   letter-spacing: 1px;
 }
+
 #menu.navbar-default .navbar-nav > li > a {
   text-transform: uppercase;
   color: #ddd;
@@ -189,6 +194,7 @@ a:focus,
   line-height: 1.42857143;
   color: #fff;
   background-color: #72a411;
+  margin-bottom: 60px;
 }
 .btn-custom:hover,
 .btn-custom:focus,
@@ -266,31 +272,31 @@ header .intro-text {
   margin: 15px 0 30px;
 }
 /* Menu Section */
-#restaurant-menu {
+#bookspace {
   padding: 0 0 60px 0;
 }
-#restaurant-menu .section-title {
+#bookspace .section-title {
   background: #444 url(/assets/img/menu-bg.jpg) center center no-repeat fixed;
   background-size: cover;
 }
-#restaurant-menu .section-title h2 {
+#bookspace .section-title h2 {
   color: #fff;
 }
-#restaurant-menu img {
+#bookspace img {
   width: 300px;
   box-shadow: 15px 0 #a7c44c;
 }
-#restaurant-menu h3 {
+#bookspace h3 {
   padding: 10px 0;
   text-transform: uppercase;
 }
-#restaurant-menu .menu-section hr {
+#bookspace .menu-section hr {
   margin: 0 auto;
 }
-#restaurant-menu .menu-section {
+#bookspace .menu-section {
   margin: 0 20px 80px;
 }
-#restaurant-menu .menu-section-title {
+#bookspace .menu-section-title {
   font-size: 26px;
   display: block;
   font-weight: 500;
@@ -298,21 +304,21 @@ header .intro-text {
   margin: 20px 0;
   text-align: center;
 }
-#restaurant-menu .menu-item {
+#bookspace .menu-item {
   margin: 35px 0;
   font-size: 18px;
 }
-#restaurant-menu .menu-item-name {
+#bookspace .menu-item-name {
   font-weight: 600;
   font-size: 17px;
   color: #555;
   border-bottom: 2px dotted rgb(213, 213, 213);
 }
-#restaurant-menu .menu-item-description {
+#bookspace .menu-item-description {
   font-style: italic;
   font-size: 15px;
 }
-#restaurant-menu .menu-item-price {
+#bookspace .menu-item-price {
   float: right;
   font-weight: 600;
   color: #555;
@@ -579,6 +585,7 @@ label {
   -webkit-transition: none;
   -o-transition: none;
   transition: none;
+  margin-bottom: 60px;
 }
 #contact .form-control:focus {
   border-color: #999;
@@ -611,68 +618,8 @@ label {
 #contact .contact-item p {
   font-size: 16px;
 }
-/* Footer Section*/
-#footer {
-  background: #262626;
-  padding: 50px 0 0 0;
-}
-#footer h3 {
-  color: #8eb640;
-  font-weight: 400;
-  font-size: 18px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-#footer .copyrights {
-  padding: 20px 0;
-  margin-top: 50px;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#779936+0,8eb640+50 */
-  background: rgb(119, 153, 54); /* Old browsers */
-  background: -moz-linear-gradient(
-    top,
-    rgba(119, 153, 54, 1) 0%,
-    rgba(142, 182, 64, 1) 50%
-  ); /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    top,
-    rgba(119, 153, 54, 1) 0%,
-    rgba(142, 182, 64, 1) 50%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    rgba(119, 153, 54, 1) 0%,
-    rgba(142, 182, 64, 1) 50%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#779936', endColorstr='#8eb640', GradientType=0 ); /* IE6-9 */
-}
-#footer .social {
-  margin: 20px 0 30px 0;
-}
-#footer .social ul li {
-  display: inline-block;
-  margin: 0 20px;
-}
-#footer .social i.fa {
-  font-size: 26px;
-  padding: 4px;
-  color: #fff;
-  transition: all 0.3s;
-}
-#footer .social i.fa:hover {
-  color: #eee;
-}
-#footer p {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.8);
-}
-#footer a {
-  color: #f6f6f6;
-}
-#footer a:hover {
-  color: #333;
-}
 
-.neel {
+.myCustom {
   opacity: 1;
   display: block;
   width: 100%;
@@ -680,7 +627,7 @@ label {
   transition: 0.5s ease;
   backface-visibility: hidden;
 }
-.neel1 {
+.myCustom1 {
   transition: 0.5s ease;
   opacity: 0;
   position: absolute;
@@ -690,15 +637,72 @@ label {
   -ms-transform: translate(-50%, -50%);
   text-align: center;
 }
-.menu-item-description:hover .neel {
+.menu-item-description:hover .myCustom {
   opacity: 0.3;
 }
 
-.menu-item-description:hover .neel1 {
+.menu-item-description:hover .myCustom1 {
   opacity: 1;
 }
 
 .text22 {
+  color: black;
+  font-size: 16px;
+  padding: 30px 42px;
+}
+
+.custom-dialog-container .mat-dialog-container {
+  display: block;
+  padding: 24px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  overflow: auto;
+  outline: 0;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  max-height: inherit;
+  background-color: transparent;
+  color: #fff;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.bookcontainer {
+  position: relative;
+  width: 50%;
+}
+
+.bookimage {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.bookmiddle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.bookcontainer:hover .image {
+  opacity: 0.3;
+}
+
+.bookcontainer:hover .middle {
+  opacity: 1;
+}
+
+.booktext {
   background-color: #4caf50;
   color: white;
   font-size: 16px;

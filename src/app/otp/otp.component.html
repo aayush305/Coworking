@@ -1,0 +1,38 @@
+<div id="body">
+  <form #nf="ngForm" (ngSubmit)="otpevent($event)" novalidate>
+    <div class="container">
+      <section id="content">
+        <div id="form">
+          <h1>Verify OTP</h1>
+          <div>
+            <input
+              type="text"
+              placeholder="Enter OTP"
+              id="otp"
+              name="otp"
+              required
+            />
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              name="button"
+              class="btn"
+              style="margin-left: 40px;"
+            >
+              Verify OTP
+            </button>
+
+            <input
+              style="margin-left: 45px;"
+              type="button"
+              value="Cancel"
+              (click)="onClose()"
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+  </form>
+</div>
