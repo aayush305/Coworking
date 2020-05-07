@@ -27,9 +27,9 @@ import { EditbookingComponent } from "./editbooking/editbooking.component";
 import { RouterModule, Routes } from "@angular/router";
 import { EditBookAreaComponent } from "./edit-book-area/edit-book-area.component";
 import { ViewVisitReqComponent } from "./view-visit-req/view-visit-req.component";
-import { ForgotComponent } from './forgot/forgot.component';
-import { ForgotmailComponent } from './forgotmail/forgotmail.component';
-import { NewpasswordComponent } from './newpassword/newpassword.component';
+import { ForgotComponent } from "./forgot/forgot.component";
+import { ForgotmailComponent } from "./forgotmail/forgotmail.component";
+import { NewpasswordComponent } from "./newpassword/newpassword.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -77,7 +77,8 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes, {
-      anchorScrolling: "enabled"
+      anchorScrolling: "enabled",
+      scrollPositionRestoration: "enabled"
     }),
     ToastrModule.forRoot({
       timeOut: 3000,

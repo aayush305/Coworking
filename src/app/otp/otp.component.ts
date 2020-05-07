@@ -18,15 +18,7 @@ export class OtpComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
-    if (!sessionStorage.getItem("email")) {
-      // window.scroll(0, 0);
-      this.Toastr.error("Please first login", "Error", {
-        progressBar: true
-      });
-      this.router.navigate([""]);
-    }
-  }
+  ngOnInit() {}
   otpevent(event) {
     console.log("Inside otp");
     event.preventDefault();

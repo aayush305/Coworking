@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit {
         // Do something before delay
         console.log("before delay");
         this.Auth.signUpData(name, email, mn, pass);
-        await delay(2000);
+        await delay(1000);
 
         // Do something after
         console.log("after delay");
@@ -77,7 +77,7 @@ export class SignupComponent implements OnInit {
   onCloseSign() {
     isSignOpen = false;
     if (isLogOpen) {
-      var logc: LoginComponent = new LoginComponent(this.login, null,null);
+      var logc: LoginComponent = new LoginComponent(this.login, null, null);
       logc.revIsLogOpen();
     }
     this.login.closeAll();
